@@ -1,48 +1,35 @@
-import React from 'react';
-import {StyleSheet,Text, View} from 'react-native'
-
-
-
-// Method-1
-
-export default function App(){
+import React, { useState } from 'react'
+import {StyleSheet, Text, View, Button} from 'react-native'
+ 
+export default function app(){
+  const [name, setName] = useState('yogya');
+  const [person, setPerson] = useState({name: 'mario', age: 18})
+  const clickhandler = () => {
+    setName('golu ');
+    setPerson({name: 'golduck', age:99});
+  }
   return(
-    <View style={styles.container}>
-    <View style = {styles.header}>
-    <Text>hello world</Text>
+    <View style = {styles.container}>
+      <Text>My name is {name}</Text>
+      <Text>His name is {person.name} and his age is {person.age}</Text>
+      <View style = {styles.btncontainer}>
+        <Button title = 'update status' onPress= {clickhandler} />
+      </View>
     </View>
-    </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
+  container: {
+    flex: 1, 
     backgroundColor: 'white', 
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header:{
-    backgroundColor: 'pink',
-    padding: 20,
+  boldfont: {
+    fontWeight: 'bold',
   },
-});
-
-// Method-2
-
-// const Helloworldapp = () =>{
-//   return (
-//     <View
-//       style = {{
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         // backgroundColor: 'black',
-        
-//       }}>
-//         <Text>ram ram</Text>
-//       </View>
-//   )
-// }
-
-// export default Helloworldapp;
+  btncontainer: {
+    margin: 20,
+  }
+})
